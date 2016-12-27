@@ -2,18 +2,18 @@ require('app-module-path').addPath(__dirname+'/src/');
 import React from 'react'
 import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
-import { renderToString } from 'react-dom/server'
+import { renderToString, renderToStaticMarkup } from 'react-dom/server'
 import thunkMiddleware from 'redux-thunk'
 import createLogger from 'redux-logger'
+import { match, RouterContext, browserHistory, createMemoryHistory } from 'react-router'
+import { syncHistoryWithStore } from 'react-router-redux'
 
-
-const cdeStore = require('reducers').cdeStore;
-const AppRouter = require('components/AppRouter').default;
-const loggerMiddleware = createLogger()
+const appStoreCreate = require('reducers').default;
+const loggerMiddleware = createLogger();
+const Routes = require('components/Routes').default;
 
 const express = require('express');
 const app = express();
-
 
 app.use('/dist/assets', express.static(__dirname + '/dist/assets'));
 app.use('/dist/images', express.static(__dirname + '/dist/images'));
@@ -22,30 +22,32 @@ app.use(handleRender);
 
 
 function handleRender(req, res) {
-    const current = (req.path === '/' || req.path === '/index') ? 'index' : req.path.split('/')[1];
+    const current = (req.path === '/' || req.path === '/index') ? '/' : req.path.split('/')[1];
     let preloadedState = {
+        nav: current,
         page: {
-            current: current,
-            pages: {
-                'index': {},
-                'note': {},
-                'aboutme': {}
-            }
+            'index': {},
+            'note': {},
+            'aboutme': {}
         }
     }
-    const store = createStore(
-      cdeStore,
-      preloadedState,
-      applyMiddleware(
-        thunkMiddleware,
-        loggerMiddleware
-      )
-    )
-    const html = renderToString(
-        <Provider store={store}>
-          <AppRouter />
-        </Provider>
-    )
+    
+    const store = appStoreCreate(preloadedState);
+
+    const history = syncHistoryWithStore(createMemoryHistory(), store)
+    
+    var html = '';
+    match({ routes: Routes, location: req.originalUrl, history: history}, (error, redirectLocation, renderProps) => {
+        if(renderProps) {
+            html = renderToStaticMarkup(
+                <Provider store={store}>
+                    <RouterContext {...renderProps} />
+                </Provider>
+            )
+        } else {
+            res.status(404).send('Not found');
+        }
+    });
 
     const finalState = store.getState();
 

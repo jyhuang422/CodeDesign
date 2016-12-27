@@ -2,14 +2,15 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 const aboutme = ({current}) => (
-  <div style={{display: current ==='index' ? 'none' : 'block'}}>
+  <div>
     About me
   </div>
 )
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
+    const current = ownProps.location ? ownProps.location.pathname : '/'
     return {
-        current: state.page.current
+        current: current
     }
 }
 

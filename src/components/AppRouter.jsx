@@ -1,23 +1,16 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Router, Route, IndexRoute, browserHistory, createMemoryHistory } from 'react-router'
-import App from 'components/App'
-import store from 'reducers'
+import { Router, Route, IndexRoute, browserHistory, hashHistory, createMemoryHistory } from 'react-router'
+import appStoreCreate from 'reducers'
 import { syncHistoryWithStore } from 'react-router-redux'
+import Routes from 'components/Routes'
 
-const history = syncHistoryWithStore(createMemoryHistory(), store)
 
-const routes = (
-    <Route path="/">
-        <IndexRoute component={App} />
-        <Route path="/aboutme" component={App} />
-    </Route>
-)
+const store = appStoreCreate();
+const history = syncHistoryWithStore(browserHistory, store);
 
 const AppRouter = () => (
-  <Router history={history}>
-    {routes}
-  </Router>
+  <Router history={history} routes={Routes} />
 )
 
 export default AppRouter

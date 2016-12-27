@@ -4,18 +4,18 @@ import Header from 'components/Header'
 import Index from 'components/Index'
 import Aboutme from 'components/Aboutme'
 
-const app = ({current}) => (
+const app = ({current, children}) => (
   <div>
       Current Page: {current}
-      <Header />
-      <Index />
-      <Aboutme />
+      <Header styles={current === '/' ? {display: 'none'} : {display: 'block'} } />
+      {children}
   </div>
 )
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
+    const current = ownProps.location ? ownProps.location.pathname : '/';
     return {
-        current: state.page.current
+        current: current
     }
 }
 

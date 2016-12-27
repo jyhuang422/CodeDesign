@@ -4,16 +4,17 @@ import NavLinks from 'components/NavLinks'
 
 const IndexRaw = ({current}) => (
   <div>
-      <div style={{display: current ==='index' ? 'block' : 'none'}}>
+      <div style={{display: current ==='/' ? 'block' : 'none'}}>
         <div id="cd-logo"><img id="cd-logo-img" src="/dist/images/CodeDesign_logo.svg" /></div>
         <NavLinks btnSize="lg" />
       </div>
   </div>
 )
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
+    const current = ownProps.location ? ownProps.location.pathname : '/';
     return {
-        current: state.page.current
+        current: current
     }
 }
 
