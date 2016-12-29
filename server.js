@@ -1,3 +1,6 @@
+require.extensions['.css'] = () => {
+  return;
+};
 require('app-module-path').addPath(__dirname+'/src/');
 import React from 'react'
 import { createStore, applyMiddleware } from 'redux'
@@ -15,21 +18,22 @@ const Routes = require('components/Routes').default;
 const express = require('express');
 const app = express();
 
+
 app.use('/dist/assets', express.static(__dirname + '/dist/assets'));
 app.use('/dist/images', express.static(__dirname + '/dist/images'));
+app.use('/code.json', express.static(__dirname + '/code.json'));
+app.use('/design.json', express.static(__dirname + '/design.json'));
+
 //app.use('/favicon.ico', express.static(__dirname + '/dist/images/CodeDesign_logo.svg'));
 app.use(handleRender);
 
 
 function handleRender(req, res) {
-    const current = (req.path === '/' || req.path === '/index') ? '/' : req.path.split('/')[1];
+    //const current = (req.path === '/' || req.path === '/index') ? '/' : req.path.split('/')[1];
     let preloadedState = {
-        nav: current,
-        page: {
-            'index': {},
-            'note': {},
-            'aboutme': {}
-        }
+        index: {},
+        note: {},
+        aboutme: {}
     }
     
     const store = appStoreCreate(preloadedState);
@@ -53,6 +57,7 @@ function handleRender(req, res) {
 
     res.send(renderFullPage(html, finalState));
 }
+
 function renderFullPage(html, preloadedState) {
     return `
         <!doctype html>
@@ -61,13 +66,15 @@ function renderFullPage(html, preloadedState) {
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <title>CodeDesign</title>
+            <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" />
+            <link rel="stylesheet" type="text/css" href="/dist/assets/style.css" />
           </head>
           <body>
             <div id="root">${html}</div>
             <script>
               window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState)}
             </script>
-            <script type="text/javascript" charset="utf8" src="dist/assets/index.js"></script>
+            <script type="text/javascript" charset="utf8" src="/dist/assets/index.js"></script>
           </body>
         </html>
     `

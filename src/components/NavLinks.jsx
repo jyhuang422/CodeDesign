@@ -5,7 +5,7 @@ import classnames from 'classnames'
 import { Link } from 'react-router'
 import {browserHistory} from 'react-router'
 
-const navLinks = ({page, onNavTo, btnSize}) => {
+const navLinks = ({page, onNavTo, btnSize, styles={}}) => {
     var datas = page;
     var btns = [];
     for(let data in datas) {
@@ -29,7 +29,7 @@ const navLinks = ({page, onNavTo, btnSize}) => {
         }
     }
     return (
-        <div style={{textAlign: 'center'}}>
+        <div style={Object.assign({}, styles, {textAlign: 'center'})}>
             {btns}
         </div>
     ) 
@@ -46,7 +46,10 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (state) => {
     return {
-        page: state.page
+        page: {
+            'notes': state.notes,
+            aboutme: state.aboutme
+        }
     }
 }
 

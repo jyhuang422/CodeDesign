@@ -4,14 +4,16 @@ import { createStore, applyMiddleware } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 import createLogger from 'redux-logger'
 import {browserHistory} from 'react-router'
+import notes from 'reducers/note'
 
-const pageData = {
-  'index': {},
-  'note': {},
-  'aboutme': {}
-};
+const index = (state = {}, action) => {
+  switch (action.type) {
+    default:
+      return state
+  }
+}
 
-const page = (state = pageData, action) => {
+const aboutme = (state = {}, action) => {
   switch (action.type) {
     default:
       return state
@@ -19,7 +21,9 @@ const page = (state = pageData, action) => {
 }
 
 export const cdeStore = combineReducers({
-  page,
+  index,
+  notes,
+  aboutme,
   routing: routerReducer
 })
 

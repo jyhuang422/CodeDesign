@@ -6,7 +6,6 @@ import Aboutme from 'components/Aboutme'
 
 const app = ({current, children}) => (
   <div>
-      Current Page: {current}
       <Header styles={current === '/' ? {display: 'none'} : {display: 'block'} } />
       {children}
   </div>
