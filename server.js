@@ -14,22 +14,57 @@ import { syncHistoryWithStore } from 'react-router-redux'
 const appStoreCreate = require('reducers').default;
 const loggerMiddleware = createLogger();
 const Routes = require('components/Routes').default;
+const dbkey = require('./dbkey.js').key;
 
 const express = require('express');
 const app = express();
-
+var mongoose = require('mongoose');
 
 app.use('/dist/assets', express.static(__dirname + '/dist/assets'));
 app.use('/dist/images', express.static(__dirname + '/dist/images'));
 app.use('/code.json', express.static(__dirname + '/code.json'));
 app.use('/design.json', express.static(__dirname + '/design.json'));
 
+//const NoteModel = require('./model/notes')
+//mongoose.connect(dbkey);
 //app.use('/favicon.ico', express.static(__dirname + '/dist/images/CodeDesign_logo.svg'));
+app.get('/api/*', function(req, res) {
+    const NoteModel = require('./model/notes')
+    const subcategory = req.url.split('/api/notes/')[1]
+    mongoose.connect(dbkey);
+    NoteModel.find({subcategory: {$in: [subcategory]}}, function(err, notes) {
+      if (err) throw err;
+      let final = {}
+      notes.forEach(function(note) {
+        final[note._id] = note;
+      })
+      mongoose.disconnect(function() {
+        console.log('connection close!!')
+      })
+      res.send(final)
+    });
+});
 app.use(handleRender);
 
 
+/*var aNote = new NoteModel({
+  id: 2,
+  title: "This is a test Title",
+  content: "Styles are not added on require, but instead on call to use/ref. Styles are removed from page if unuse/unref is called exactly as often as use/ref.",
+  img: "/dist/images/CodeDesign_logo.svg",
+  subcategory: ['code', 'design'],
+  author: 1
+});
+
+aNote.save(function(err) {
+  if (err) throw err;
+  console.log('User created!');
+});*/
+
+
 function handleRender(req, res) {
-    //const current = (req.path === '/' || req.path === '/index') ? '/' : req.path.split('/')[1];
+    if(req.url.indexOf('/api/') !== -1) return;
+
     let preloadedState = {
         index: {},
         note: {},

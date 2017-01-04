@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 import {
   SELECT_SUBCATEGORY, INVALIDATE_SUBCATEGORY,
-  REQUEST_POSTS, RECEIVE_POSTS
+  POSTS_REQUEST, POSTS_SUCCESS, POSTS_FAIL
 } from '../actions/noteAction'
 
 const deepAssign = require('deep-assign');
@@ -26,17 +26,17 @@ function posts(state = {
       return Object.assign({}, state, {
         didInvalidate: true
       })
-    case REQUEST_POSTS:
+    case POSTS_REQUEST:
       return Object.assign({}, state, {
         isFetching: true,
         didInvalidate: false
       })
-    case RECEIVE_POSTS:
+    case POSTS_SUCCESS:
       return Object.assign({}, state, {
         isFetching: false,
         didInvalidate: false,
         items: Object.keys(action.posts),
-        lastUpdated: action.receivedAt
+        lastUpdated: Date.now()//action.receivedAt
       })
     default:
       return state
@@ -68,24 +68,20 @@ const testdata = {
     }
 }
 
-function entities(state = testdata.entities, action) {
-    switch (action.type) {
-        case INVALIDATE_SUBCATEGORY:
-        case RECEIVE_POSTS:
-        case REQUEST_POSTS:
-          return deepAssign({}, state, {
-            posts: action.posts
-          })
-        default:
-          return state
+function entities(state = {authors: {}, posts: {}}, action) {
+    if(action.posts) {
+      return deepAssign({}, state, {
+        posts: action.posts
+      })
     }
+    return state
 }
 
 function postsBySubcategory(state = {}, action) {
   switch (action.type) {
     case INVALIDATE_SUBCATEGORY:
-    case RECEIVE_POSTS:
-    case REQUEST_POSTS:
+    case POSTS_REQUEST:
+    case POSTS_SUCCESS:
       return Object.assign({}, state, {
         [action.subcategory]: posts(state[action.subcategory], action)
       })

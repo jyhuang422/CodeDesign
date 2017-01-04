@@ -5,6 +5,7 @@ import thunkMiddleware from 'redux-thunk'
 import createLogger from 'redux-logger'
 import {browserHistory} from 'react-router'
 import notes from 'reducers/note'
+import api from 'middleware/api'
 
 const index = (state = {}, action) => {
   switch (action.type) {
@@ -36,6 +37,7 @@ const appStoreCreate = function(preloadedState) {
     preloadedState,
     applyMiddleware(
       thunkMiddleware,
+      api,
       loggerMiddleware
       //routerHistoryMiddleware
     )
