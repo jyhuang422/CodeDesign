@@ -29,7 +29,7 @@ export const cdeStore = combineReducers({
 })
 
 const loggerMiddleware = createLogger()
-//const routerHistoryMiddleware = routerMiddleware(browserHistory)
+const routerHistoryMiddleware = routerMiddleware(browserHistory)
 
 const appStoreCreate = function(preloadedState) {
   return createStore(
@@ -38,8 +38,8 @@ const appStoreCreate = function(preloadedState) {
     applyMiddleware(
       thunkMiddleware,
       api,
+      routerHistoryMiddleware,
       loggerMiddleware
-      //routerHistoryMiddleware
     )
   )
 }

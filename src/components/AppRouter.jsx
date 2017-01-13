@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Router, Route, IndexRoute, browserHistory, hashHistory, createMemoryHistory } from 'react-router'
+import { Router, browserHistory, hashHistory, createMemoryHistory } from 'react-router'
 import appStoreCreate from 'reducers'
 import { syncHistoryWithStore } from 'react-router-redux'
 import Routes from 'components/Routes'

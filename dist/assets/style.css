@@ -1,6 +1,6 @@
 .Note__wrap___2fUNS {
     width: 100%;
-    padding-top: 80px;
+    padding-top: 100px;
     box-sizing: border-box;
 }
 
@@ -11,9 +11,9 @@
 }
 
 .Note__category___1QDcK {
-    width: 40%;
-    max-width: 350px;
+    width: 250px;
     background: #eee;
+    position: fixed;
     height: 100vh;
     padding-top: 20px;
     float: left;
@@ -26,7 +26,8 @@
 
 .Note__desc___2XuDn {
     box-sizing: border-box;
-    line-height: 20px;
+    padding-left: 20px;
+    line-height: 30px;
     overflow: hidden;
 }
 
@@ -36,14 +37,15 @@
     padding: 10px 0;
 }
 
-.Note__content___3nTM8 {
+.Note__main___1LJAh {
     width: 60%;
-    padding-top: 20px;
+    min-width: 120px;
+    padding: 0px 0px 20px 250px;
     float: left
 }
 
 .Note__timestamp___2Ob6T {
-    padding: 5px;
+    padding: 10px 5px;
     text-align: right;
 }
 
@@ -68,7 +70,7 @@
 .Note__item___2mw8e {
     padding: 5px;
     min-height: 50px;
-    max-height: 100px;
+    max-height: 150px;
     overflow: hidden;
     border-bottom: 1px solid #eee;
     display: block;
@@ -79,5 +81,33 @@
 
 .Note__item___2mw8e:hover {
     background: #f7fdff;
+}form {
+    padding: 10px;
+}
+
+.NoteForm__title___rX0ku {
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    font-size: 18px;
+    margin-bottom: 20px;
+    border: none;
+    border-bottom: 1px solid #eee;
+    outline: none;
+}
+
+.NoteForm__title___rX0ku:focus {
+    border: none;
+    border-bottom: 1px solid #ddd;
+}
+
+.NoteForm__content___wUjsa {
+    width: 100%;
+    height: 100%;
+    min-height: 500px;
+    line-height: 25px;
+    font-size: 16px;
+    border: none;
+    outline: none;
 }
 /*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzdHlsZS5jc3MiLCJzb3VyY2VSb290IjoiIn0=*/

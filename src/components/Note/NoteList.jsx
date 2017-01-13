@@ -9,6 +9,7 @@ class noteList extends React.Component {
     constructor(props) {
         super(props)
         this.viewFull = this.viewFull.bind(this)
+        this.addNewPost = this.addNewPost.bind(this)
     }
 
     componentDidMount() {
@@ -41,13 +42,20 @@ class noteList extends React.Component {
         browserHistory.push('/note/'+id)
     }
 
+    addNewPost() {
+        browserHistory.push('/note/')
+    }
+
     render() {
         const { posts, items, isFetching, lastUpdated } = this.props
         return (
-            <div className={styles.content}>
+            <div className={styles.main}>
                 {isFetching && items.length === 0 &&
                   <h2>Loading...</h2>
                 }
+                <Link to={'/note/'} onClick={(e)=>{e.preventDefault(); this.addNewPost()}} >
+                    Add New Post
+                </Link>
                 <p className={styles.timestamp}> 
                     {lastUpdated &&
                       <span>

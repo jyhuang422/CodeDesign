@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var noteSchema = new Schema({
-  id: { type: Number, unique: true },
+  //id: { type: Number, unique: true },
   title: { type: String, required: true },
   content: { type: String, required: true },
   subcategory: { type: Array },

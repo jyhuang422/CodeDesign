@@ -1,6 +1,6 @@
 .wrap {
     width: 100%;
-    padding-top: 80px;
+    padding-top: 100px;
     box-sizing: border-box;
 }
 
@@ -11,9 +11,9 @@
 }
 
 .category {
-    width: 40%;
-    max-width: 350px;
+    width: 250px;
     background: #eee;
+    position: fixed;
     height: 100vh;
     padding-top: 20px;
     float: left;
@@ -26,7 +26,8 @@
 
 .desc {
     box-sizing: border-box;
-    line-height: 20px;
+    padding-left: 20px;
+    line-height: 30px;
     overflow: hidden;
 }
 
@@ -36,14 +37,15 @@
     padding: 10px 0;
 }
 
-.content {
+.main {
     width: 60%;
-    padding-top: 20px;
+    min-width: 120px;
+    padding: 0px 0px 20px 250px;
     float: left
 }
 
 .timestamp {
-    padding: 5px;
+    padding: 10px 5px;
     text-align: right;
 }
 
@@ -68,7 +70,7 @@
 .item {
     padding: 5px;
     min-height: 50px;
-    max-height: 100px;
+    max-height: 150px;
     overflow: hidden;
     border-bottom: 1px solid #eee;
     display: block;

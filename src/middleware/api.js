@@ -1,17 +1,28 @@
+import { normalize, schema } from 'normalizr'
+
 const API_ROOT = `http://localhost:3000/api/`;
 
-const callApi = (endpoint, schema) => {
+const callApi = (endpoint, apiData, schema) => {
   const fullUrl = (endpoint.indexOf(API_ROOT) === -1) ? API_ROOT + endpoint : endpoint
+  const options = apiData || { method: "GET" }
 
-  return fetch(fullUrl)
+  return fetch(fullUrl, options)
     .then(response =>
       response.json().then(json => {
-        return json;
+        return normalize(json, schema)
       })
     );
 };
 
 export const CALL_API = Symbol('Call API')
+
+const postSchema = new schema.Entity('posts', {}, {idAttribute: '_id'})
+
+export const Schemas = {
+    POST: postSchema,
+    POSTS: [postSchema]
+}
+
 
 export default store => next => action => {
   const callAPI = action[CALL_API]
@@ -19,8 +30,8 @@ export default store => next => action => {
     return next(action)
   }
 
-  let { endpoint } = callAPI
-  const { schema, types, subcategory } = callAPI
+  let { endpoint, apiData } = callAPI
+  const { schema, types } = callAPI
 
   if (typeof endpoint === 'function') {
     endpoint = endpoint(store.getState())
@@ -46,13 +57,11 @@ export default store => next => action => {
   }
 
   const [ requestType, successType, failureType ] = types
-  next(actionWith({ type: requestType, subcategory }))
+  next(actionWith({ type: requestType }))
 
-  return callApi(endpoint, schema).then(
+  return callApi(endpoint, apiData, schema).then(
     response => next(actionWith({
-      posts: response,
-      //receivedAt: Date.now(),
-      subcategory,
+      response,
       type: successType
     })),
     error => next(actionWith({

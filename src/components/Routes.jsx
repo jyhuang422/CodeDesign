@@ -14,8 +14,9 @@ const Routes = (
         <Route path="notes/:subcategory" component={Note}>
             <IndexRoute component={NoteList} />
         </Route>
-        <Route path="note/:id" component={Note}>
+        <Route path="note/" component={Note}>
             <IndexRoute component={NoteFull} />
+            <Route path=":id" components={NoteFull} />
         </Route>
         <Redirect from="notes" to="/notes/code" />
     </Route>
