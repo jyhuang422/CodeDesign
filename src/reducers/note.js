@@ -143,7 +143,7 @@ function selectedPost(state = {}, action) {
       }
     case ADD_NEW_POST:
       return {
-        ...state,
+        id: null,
         isEditing: true,
         isNewPost: true,
         updatedTitle: "",
