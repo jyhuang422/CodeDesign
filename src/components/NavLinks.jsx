@@ -29,9 +29,9 @@ const navLinks = ({page, onNavTo, btnSize, styles={}}) => {
         }
     }
     return (
-        <div style={Object.assign({}, styles, {textAlign: 'center'})}>
+        <nav style={Object.assign({}, styles, {textAlign: 'center'})}>
             {btns}
-        </div>
+        </nav>
     ) 
 }
 

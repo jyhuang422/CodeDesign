@@ -2,6 +2,7 @@
     width: 100%;
     padding-top: 100px;
     box-sizing: border-box;
+    display: flex;
 }
 
 .wrap::after {
@@ -37,16 +38,29 @@
     padding: 10px 0;
 }
 
+.content {
+    max-height: 90px
+}
+
+.article {
+    padding: 15px;
+}
+
 .main {
-    width: 60%;
-    min-width: 120px;
-    padding: 0px 0px 20px 250px;
-    float: left
+    width: 900px;
+    max-width: 100%;
+    padding-bottom: 20px;
+    left: 250px;
+    float: left;
+    position: relative;
 }
 
 .timestamp {
     padding: 10px 5px;
     text-align: right;
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 
 .list {
@@ -77,6 +91,7 @@
     text-decoration: none;
     color: #000;
     transition: all 1s;
+    position: relative;
 }
 
 .item:hover {

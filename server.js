@@ -24,8 +24,8 @@ var mongoose = require('mongoose');
 
 app.use('/dist/assets', express.static(__dirname + '/dist/assets'));
 app.use('/dist/images', express.static(__dirname + '/dist/images'));
-app.use('/code.json', express.static(__dirname + '/code.json'));
-app.use('/design.json', express.static(__dirname + '/design.json'));
+//app.use('/code.json', express.static(__dirname + '/code.json'));
+//app.use('/design.json', express.static(__dirname + '/design.json'));
 
 app.use(bodyParser.json());
 //const NoteModel = require('./model/notes')
@@ -80,6 +80,14 @@ app.all('/api/*', function(req, res) {
             })
             res.send(note)
           })
+        } else if(method === 'DELETE') {
+          NoteModel.findByIdAndRemove(id, function(err, note) {
+            if(err) throw err;
+            mongoose.disconnect(function() {
+              console.log('connection close!!')
+            })
+            res.send(note)
+          })
         } else if(method === 'POST') {
           const newPost = new NoteModel(req.body)
           newPost.save(function(err, note) {
@@ -104,21 +112,6 @@ app.all('/api/*', function(req, res) {
     }
 });
 app.use(handleRender);
-
-
-/*var aNote = new NoteModel({
-  id: 2,
-  title: "This is a test Title",
-  content: "Styles are not added on require, but instead on call to use/ref. Styles are removed from page if unuse/unref is called exactly as often as use/ref.",
-  img: "/dist/images/CodeDesign_logo.svg",
-  subcategory: ['code', 'design'],
-  author: 1
-});
-
-aNote.save(function(err) {
-  if (err) throw err;
-  console.log('User created!');
-});*/
 
 
 function handleRender(req, res) {

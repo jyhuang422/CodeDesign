@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import styles from './Note.css'
 import classnames from 'classnames'
-import { fetchPostIfNeeded, editPost, updatePostIfNeeded, selectPost, addNewPost, createPost } from 'actions/noteAction'
+import { fetchPostIfNeeded, editPost, updatePostIfNeeded, selectPost, addNewPost, createPost, deletePost } from 'actions/noteAction'
 import Noteform from './NoteForm'
 import { browserHistory } from 'react-router'
 
@@ -12,6 +12,7 @@ class noteFull extends React.Component {
         this.editPost = this.editPost.bind(this)
         this.updatePost = this.updatePost.bind(this)
         this.createPost = this.createPost.bind(this)
+        this.deletePost = this.deletePost.bind(this)
     }
 
     componentDidMount() {
@@ -25,9 +26,14 @@ class noteFull extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        const { dispatch, params, current } = nextProps
-        if(params.id) dispatch(fetchPostIfNeeded(params.id))
-        else if(current.isNewPost && current.id) browserHistory.replace(`/note/${current.id}`)
+        console.log(nextProps)
+        const { dispatch, params, current, selectedSubcategory } = nextProps
+        if(params.id) {
+            dispatch(fetchPostIfNeeded(params.id))
+            delete params.id
+        }
+        else if(current.isDeleted) browserHistory.replace(`/notes/${selectedSubcategory}`)
+        else if(current.id) browserHistory.replace(`/note/${current.id}`)
     }
 
     editPost(id) {
@@ -45,6 +51,11 @@ class noteFull extends React.Component {
         dispatch(createPost(current))
     }
 
+    deletePost(id) {
+        const { dispatch, post } = this.props
+        dispatch(deletePost(id, post.subcategory))
+    }
+
     render() {
         const { post, params, current }  = this.props
         const id = current.id
@@ -58,7 +69,7 @@ class noteFull extends React.Component {
                         {current.isEditing ? <a href="#" onClick={(e)=>{e.preventDefault(); this.updatePost(id)}}>Save</a>
                                            : <a href="#" onClick={(e)=>{e.preventDefault(); this.editPost(id)}}>Edit</a>
                         }
-                        <a href="#" onClick={(e)=>{e.preventDefault()}}>Delete</a>
+                        <a href="#" onClick={(e)=>{e.preventDefault(); this.deletePost(id)}}>Delete</a>
                     </div>
                 }
                 { post && 
@@ -68,7 +79,7 @@ class noteFull extends React.Component {
                                 <img src={ post.img } alt="" />
                             </div>
                         }
-                        <article style={{display: current.isEditing ? 'none': 'block'}}>
+                        <article className={styles.article} style={{display: current.isEditing ? 'none': 'block'}}>
                             <h1 className={styles.title} style={{textAlign: 'center'}}>{ typeof(current.updatedTitle) === 'string' ?  current.updatedTitle : post.title }</h1>
                             { (typeof(current.updatedContent) === 'string' ? current.updatedContent : post.content).split('\n').map(function(item) {
                                 return (
@@ -88,9 +99,11 @@ const mapStateToProps = (state = {}) => {
     const notes = state.notes
     const current = notes.selectedPost
     const posts = notes.entities.posts
+    const selectedSubcategory = notes.selectedSubcategory
     return {
         current,
-        post: posts && posts[current.id] || null 
+        post: posts && posts[current.id] || null,
+        selectedSubcategory
     }
 }
 

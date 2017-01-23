@@ -7,7 +7,8 @@ var noteSchema = new Schema({
   content: { type: String, required: true },
   subcategory: { type: Array },
   img: String,
-  author: Number
+  author: Number,
+  updatedTime: Date
 });
 
 var NoteModel = mongoose.model('NoteModel', noteSchema);

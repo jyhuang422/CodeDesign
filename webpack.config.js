@@ -35,10 +35,6 @@ module.exports = {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract("style-loader", "css-loader?modules=true&localIdentName=[name]__[local]___[hash:base64:5]"),
         include: /src/
-      },
-      {
-        test: /reset\.css$/,
-        loaders: ["style-loader", "css-loader"]
       }
     ]
   },

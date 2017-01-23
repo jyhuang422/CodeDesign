@@ -74,7 +74,8 @@ export const createPost = (data) => {
   const updatedFields = {
     title: data.updatedTitle,
     content: data.updatedContent,
-    subcategory: data.updatedSubcategory || ['code']
+    subcategory: data.updatedSubcategory || ['code'],
+    updatedTime: Date.now()
   }
   return {
     [CALL_API]: {
@@ -135,6 +136,7 @@ export function updatePostIfNeeded(id, data) {
   return (dispatch, getState) => {
     const updatedFields = getUpdatedPost(getState().notes, id, data)
     if(Object.keys(updatedFields).length > 0) {
+      updatedFields.updatedTime = Date.now()
       return dispatch(updatePost(id, updatedFields))
     } else {
       return dispatch(updatePostNoChange(id))
@@ -148,6 +150,23 @@ export function addNewPost() {
     type: ADD_NEW_POST
   }
 }
+
+export const POST_DELETE_REQUEST = 'POST_DELETE_REQUEST'
+export const POST_DELETE_SUCCESS = 'POST_DELETE_SUCCESS'
+export const POST_DELETE_FAIL = 'POST_DELETE_FAIL'
+
+export const deletePost = (id, subcategory) => ({
+  [CALL_API]: {
+    types: [POST_DELETE_REQUEST, POST_DELETE_SUCCESS, POST_DELETE_FAIL],
+    endpoint: `note/${id}`,
+    schema: Schemas.POST,
+    apiData: {
+      method: "DELETE"
+    }
+  },
+  id,
+  subcategory
+})
 
 
 export const SELECT_SUBCATEGORY = 'SELECT_SUBCATEGORY'

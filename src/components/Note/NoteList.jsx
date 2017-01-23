@@ -71,7 +71,10 @@ class noteList extends React.Component {
                             </div>
                             <div className={styles.desc}>
                                 <p className={styles.title}>{posts[id]['title']}</p>
-                                <p className="">{posts[id]['content']}</p>
+                                {posts[id]['updatedTime'] && 
+                                    <p className={styles.timestamp}>{new Date(posts[id]['updatedTime']).toLocaleDateString()}</p>
+                                }
+                                <p className={styles.content}>{posts[id]['content']}</p>
                             </div>
                         </Link>
                     ))}

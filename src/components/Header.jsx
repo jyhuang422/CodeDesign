@@ -5,9 +5,9 @@ import { Link } from 'react-router'
 
 
 const Header = ({styles}) => (
-  <div className="header" style={styles}>
+  <header className="header" style={styles}>
     <NavLinks btnSize="sm" styles={{display: 'inline-block'}} />
-  </div>
+  </header>
 )
 
 export default Header

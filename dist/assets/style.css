@@ -2,6 +2,7 @@
     width: 100%;
     padding-top: 100px;
     box-sizing: border-box;
+    display: flex;
 }
 
 .Note__wrap___2fUNS::after {
@@ -37,16 +38,29 @@
     padding: 10px 0;
 }
 
+.Note__content___3nTM8 {
+    max-height: 90px
+}
+
+.Note__article___2RW1v {
+    padding: 15px;
+}
+
 .Note__main___1LJAh {
-    width: 60%;
-    min-width: 120px;
-    padding: 0px 0px 20px 250px;
-    float: left
+    width: 900px;
+    max-width: 100%;
+    padding-bottom: 20px;
+    left: 250px;
+    float: left;
+    position: relative;
 }
 
 .Note__timestamp___2Ob6T {
     padding: 10px 5px;
     text-align: right;
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 
 .Note__list___3XjtI {
@@ -77,6 +91,7 @@
     text-decoration: none;
     color: #000;
     transition: all 1s;
+    position: relative;
 }
 
 .Note__item___2mw8e:hover {

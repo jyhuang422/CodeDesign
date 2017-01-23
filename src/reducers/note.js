@@ -5,7 +5,8 @@ import {
   POSTS_REQUEST, POSTS_SUCCESS, POSTS_FAIL,
   POST_SUCCESS, EDIT_POST,
   POST_UPDATE_SUCCESS, POST_UPDATE_NOCHANGE,
-  SELECT_POST, ADD_NEW_POST, POST_CREATE_SUCCESS
+  SELECT_POST, ADD_NEW_POST, POST_CREATE_SUCCESS,
+  POST_DELETE_SUCCESS
 } from '../actions/noteAction'
 
 import deepAssign from 'deep-assign';
@@ -53,6 +54,15 @@ function posts(state = {
         items: [...state.items, action.response.result],
         lastUpdated: Date.now()
       }
+    case POST_DELETE_SUCCESS:
+      let id = action.response.result
+      let index = state.items.indexOf(id)
+      state.items.splice(index, 1)
+      return {
+        ...state,
+        items: state.items,
+        lastUpdated: Date.now()
+      }
     default:
       return state
   }
@@ -95,6 +105,8 @@ function entities(state = {}, action) {
             posts: action.response.entities.posts
           })
         }
+      case POST_DELETE_SUCCESS:
+        return state
       default:
         return state
     }
@@ -110,8 +122,9 @@ function postsBySubcategory(state = {}, action) {
         [action.subcategory]: posts(state[action.subcategory], action)
       }
     case POST_CREATE_SUCCESS:
+    case POST_DELETE_SUCCESS:
       let updated = {}
-      action.subcategory.forEach((ctg)=>{
+      action.subcategory.forEach((ctg) => {
         updated[ctg] = posts(state[ctg], action)
       })
       return {
@@ -155,6 +168,11 @@ function selectedPost(state = {}, action) {
         id: action.response.result,
         isNewPost: false,
         isEditing: false
+      }
+    case POST_DELETE_SUCCESS:
+      return {
+        id: action.response.result,
+        isDeleted: true
       }
     case actionTypes.CHANGE:
       switch(action.model) {
