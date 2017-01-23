@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import styles from './Note.css'
+import styles from './NoteList.css'
 import classnames from 'classnames'
 import { fetchPostsIfNeeded, selectSubcategory } from 'actions/noteAction'
 import { Link, browserHistory } from 'react-router'

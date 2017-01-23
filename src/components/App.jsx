@@ -6,7 +6,7 @@ import Aboutme from 'components/Aboutme'
 
 const app = ({current, children}) => (
   <div>
-      <Header styles={current === '/' ? {display: 'none'} : {display: 'block'} } />
+      <Header style={current === '/' ? {display: 'none'} : {display: 'block'} } />
       {children}
   </div>
 )

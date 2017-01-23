@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import styles from './Note.css'
+import styles from './NoteFull.css'
 import classnames from 'classnames'
 import { fetchPostIfNeeded, editPost, updatePostIfNeeded, selectPost, addNewPost, createPost, deletePost } from 'actions/noteAction'
 import Noteform from './NoteForm'
@@ -82,11 +82,13 @@ class noteFull extends React.Component {
                         }
                         <article className={styles.article} style={{display: current.isEditing ? 'none': 'block'}}>
                             <h1 className={styles.title} style={{textAlign: 'center'}}>{ typeof(current.updatedTitle) === 'string' ?  current.updatedTitle : post.title }</h1>
+                            <p className={styles.desc}>
                             { (typeof(current.updatedContent) === 'string' ? current.updatedContent : post.content).split('\n').map(function(item) {
                                 return (
-                                    <span className={styles.desc}>{item}<br /></span>
+                                    <span>{item}<br /></span>
                                 )
                             }) }
+                            </p>
                         </article>
                     </div>
                 }

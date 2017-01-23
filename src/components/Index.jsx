@@ -1,11 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import styles from './main.css'
 import NavLinks from 'components/NavLinks'
 
 const IndexRaw = ({current}) => (
   <div>
       <div style={{display: current ==='/' ? 'block' : 'none'}}>
-        <div id="cd-logo"><img id="cd-logo-img" src="/dist/images/CodeDesign_logo.svg" /></div>
+        <div className={styles.logo}><img src="/dist/images/CodeDesign_logo.svg" /></div>
         <NavLinks btnSize="lg" />
       </div>
   </div>

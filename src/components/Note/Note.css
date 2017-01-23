@@ -25,75 +25,10 @@
     margin: 5px;
 }
 
-.desc {
-    box-sizing: border-box;
-    padding-left: 20px;
-    line-height: 30px;
-    overflow: hidden;
-}
-
-.title {
-    font-size: 20px;
-    font-weight: bold;
-    padding: 10px 0;
-}
-
-.content {
-    max-height: 90px
-}
-
-.article {
-    padding: 15px;
-}
-
 .main {
     width: 900px;
     max-width: 100%;
     padding-bottom: 20px;
     left: 250px;
-    float: left;
     position: relative;
-}
-
-.timestamp {
-    padding: 10px 5px;
-    text-align: right;
-    position: absolute;
-    top: 0;
-    right: 0;
-}
-
-.list {
-    width: 100%;
-    transition: opacity 1s;
-}
-
-.media {
-    float: left;
-    width: 120px;
-    padding: 3px;
-    box-sizing: border-box;
-}
-
-.media img {
-    filter: grayscale(100%);
-    max-width: 100%;
-    max-height: 100%;
-}
-
-.item {
-    padding: 5px;
-    min-height: 50px;
-    max-height: 150px;
-    overflow: hidden;
-    border-bottom: 1px solid #eee;
-    display: block;
-    text-decoration: none;
-    color: #000;
-    transition: all 1s;
-    position: relative;
-}
-
-.item:hover {
-    background: #f7fdff;
 }

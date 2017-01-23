@@ -2,19 +2,20 @@ import React from 'react'
 import { connect } from 'react-redux'
 import {navTo} from 'actions'
 import classnames from 'classnames'
+import styles from './main.css'
 import { Link } from 'react-router'
 import {browserHistory} from 'react-router'
 
-const navLinks = ({page, onNavTo, btnSize, styles={}}) => {
+const navLinks = ({page, onNavTo, btnSize, style={}}) => {
     var datas = page;
     var btns = [];
     for(let data in datas) {
         if(datas.hasOwnProperty(data)) {
             let path = data === 'index' ? '/' : '/'+data;
-            let classes = classnames('btn-category', (btnSize ? btnSize : ''));
+            //let classes = classnames('btn-category', (btnSize ? btnSize : ''));
             let btn = (
                 <Link
-                    className={classes}
+                    className={styles.btn+" "+styles[btnSize]}
                     key={'main_'+data}
                     to={path}
                     onClick = {(e) => {
@@ -29,7 +30,7 @@ const navLinks = ({page, onNavTo, btnSize, styles={}}) => {
         }
     }
     return (
-        <nav style={Object.assign({}, styles, {textAlign: 'center'})}>
+        <nav style={Object.assign({}, style, {textAlign: 'center'})}>
             {btns}
         </nav>
     ) 
