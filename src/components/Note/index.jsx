@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import styles from './Note.css'
 import classnames from 'classnames'
 import { fetchPostsIfNeeded, selectSubcategory } from 'actions/noteAction'
+import NoteTool from './NoteTool'
 import { Link, browserHistory } from 'react-router'
 
 
@@ -12,7 +13,10 @@ const note = ({changeSubcategory, children}) => (
             <Link to='/notes/code' onClick={(e) => {e.preventDefault(); changeSubcategory('code')}} >Code</Link>
             <Link to='/notes/design' onClick={(e) => {e.preventDefault(); changeSubcategory('design')}}>Design</Link>
         </div>
-        {children}
+        <div className={styles.main}>
+            <NoteTool />
+            {children}
+        </div>
       </div>
 );
 

@@ -16,7 +16,7 @@ class noteFull extends React.Component {
     }
 
     componentDidMount() {
-        const { dispatch, params, posts } = this.props
+        const { dispatch, params } = this.props
         const id = (params && params.id) ? params.id : null
         if(id) {
             dispatch(selectPost(id))
@@ -26,14 +26,15 @@ class noteFull extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log(nextProps)
-        const { dispatch, params, current, selectedSubcategory } = nextProps
-        if(params.id) {
-            dispatch(fetchPostIfNeeded(params.id))
+        const { dispatch, params, current, selectedSubcategory, post } = nextProps
+        if(params.id && !current.id) {
+            dispatch(selectPost(params.id))
             delete params.id
         }
         else if(current.isDeleted) browserHistory.replace(`/notes/${selectedSubcategory}`)
-        else if(current.id) browserHistory.replace(`/note/${current.id}`)
+        else if(current.isCreated && !params.id) browserHistory.replace(`/note/${current.id}`)
+        else if(current.id) dispatch(fetchPostIfNeeded(current.id))
+        else if(!current.isNewPost) dispatch(addNewPost())
     }
 
     editPost(id) {
@@ -60,7 +61,7 @@ class noteFull extends React.Component {
         const { post, params, current }  = this.props
         const id = current.id
         return (
-            <div className={styles.main}>
+            <div>
                 {current.isNewPost &&
                     <a href="#" onClick={(e)=>{e.preventDefault(); this.createPost(id)}}>Create</a>
                 }
