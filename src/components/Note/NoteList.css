@@ -50,10 +50,10 @@
     display: block;
     text-decoration: none;
     color: #000;
-    transition: all 1s;
+    transition: all 0.5s;
     position: relative;
 }
 
 .item:hover {
-    background: #f7fdff;
+    background: #fbfeff;
 }

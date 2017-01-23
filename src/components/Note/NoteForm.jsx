@@ -1,10 +1,12 @@
 import React from 'react'
 //import { Field, reduxForm } from 'redux-form';
 import { Field, Form, actions } from 'react-redux-form';
+import { createPost } from 'actions/noteAction'
+
 import { connect } from 'react-redux'
 import styles from './NoteForm.css'
 
-let noteForm = ({post, noteModel, current}) => (
+let noteForm = ({post, noteModel, current, createPost}) => (
     <form style={{display: current.isEditing ? 'block' : 'none'}}>
         <Field model="noteModel.title">
             <input className={styles.title} 
@@ -19,6 +21,9 @@ let noteForm = ({post, noteModel, current}) => (
                       value={ typeof(current.updatedContent) === 'string' ? current.updatedContent : post.content } 
             />
         </Field>
+        {current.isNewPost && 
+        <a className={styles.create} href="#" onClick={(e)=>{e.preventDefault(); createPost(current)}}>Create</a>
+        }
     </form>
 )
 
@@ -31,6 +36,14 @@ const mapStateToProps = (state = {}) => {
         noteModel: state.noteModel,
         current
     }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    createPost: (current) => {
+      dispatch(createPost(current))
+    }
+  }
 }
 
 // Decorate the form component
@@ -46,7 +59,8 @@ const NoteForm = connect(
   /*state => ({
     initialValues: {title: 'title', content: 'content'} // pull initial values from account reducer
   }),*/
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(noteForm);
 
 export default NoteForm;

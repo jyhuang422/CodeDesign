@@ -166,6 +166,7 @@ function selectedPost(state = {}, action) {
       return {
         ...state,
         id: action.response.result,
+        isCreated: true,
         isNewPost: false,
         isEditing: false
       }

@@ -1,11 +1,16 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { addNewPost } from 'actions/noteAction'
+import styles from './NoteTool.css'
 import { Link, browserHistory } from 'react-router'
 
 const noteTool = ({current, addNewPost}) => (
-    <div>
-        <Link to={'/note/'} onClick={(e)=>{e.preventDefault(); addNewPost()}} >
+    <div className={styles.container}>
+        <Link 
+            className={styles.link} 
+            to={'/note/'} 
+            onClick={(e)=>{e.preventDefault(); addNewPost()}}
+        >
             Add New Post
         </Link>
     </div>

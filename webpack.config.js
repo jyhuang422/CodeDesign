@@ -27,10 +27,10 @@ module.exports = {
         loaders: ['babel'],
         exclude: /node_modules/
       },
-      {
+      /*{
         test: /\.scss$/,
         loaders: ["style-loader", "css-loader", "sass-loader"]
-      },
+      },*/
       {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract("style-loader", "css-loader?modules=true&localIdentName=[name]__[local]___[hash:base64:5]"),

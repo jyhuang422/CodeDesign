@@ -62,11 +62,8 @@ class noteFull extends React.Component {
         const id = current.id
         return (
             <div>
-                {current.isNewPost &&
-                    <a href="#" onClick={(e)=>{e.preventDefault(); this.createPost(id)}}>Create</a>
-                }
                 {!current.isNewPost && 
-                    <div>
+                    <div className={styles.tool}>
                         {current.isEditing ? <a href="#" onClick={(e)=>{e.preventDefault(); this.updatePost(id)}}>Save</a>
                                            : <a href="#" onClick={(e)=>{e.preventDefault(); this.editPost(id)}}>Edit</a>
                         }

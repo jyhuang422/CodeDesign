@@ -1,4 +1,97 @@
-.Note__wrap___2fUNS {
+html, body {
+    height: 100%;
+}
+
+.main__btn___15aIZ {
+    margin: 5px 10px;
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    box-sizing: border-box;
+    width: 100px;
+    height: 100px;
+    color: #000;
+}
+
+.main__btn___15aIZ:before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: #ddd;
+    margin-bottom: 5px;
+    box-sizing: border-box;
+}
+
+.main__btn___15aIZ:hover:before {
+    border: 2px solid red;
+    content: '+';
+    color: red;
+    line-height: 100px;
+}
+
+.main__btn___15aIZ:hover:after {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    width: 70%;
+    border: 2px solid #ddd;
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    margin: auto;
+}
+
+.main__btn___15aIZ.main__lg___1PdLM {
+    width: 140px;
+    height: 140px;
+    font-size: 20px;
+}
+
+.main__btn___15aIZ.main__lg___1PdLM:before {
+    line-height: 140px;
+}
+
+.main__btn___15aIZ.main__sm___1m6BU {
+    width: 60px;
+    height: 60px;
+    font-size: 15px;
+}
+
+.main__btn___15aIZ.main__sm___1m6BU:before{
+    line-height: 60px;
+}
+
+.main__btn___15aIZ.main__sm___1m6BU:hover:before {
+    border-width: 1px;
+}
+
+.main__header___OotjU {
+    background: #999;
+    padding: 5px;
+    box-sizing: border-box;
+    height: 100px;
+    text-align: right;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+}
+
+
+.main__logo___3Nfs1 {
+    width: 70%;
+    max-width: 580px;
+    margin: auto;
+    text-align: center;
+}
+
+.main__logo___3Nfs1 img {
+    width: 100%;
+    height: 100%;
+}.Note__wrap___2fUNS {
     width: 100%;
     padding-top: 100px;
     box-sizing: border-box;
@@ -12,50 +105,78 @@
 }
 
 .Note__category___1QDcK {
-    width: 250px;
+    width: 200px;
     background: #eee;
     position: fixed;
     height: 100vh;
-    padding-top: 20px;
+    z-index: 1;
     float: left;
 }
 
 .Note__category___1QDcK a {
-    display: inline-block;
-    margin: 5px;
-}
-
-.Note__desc___2XuDn {
-    box-sizing: border-box;
-    padding-left: 20px;
-    line-height: 30px;
-    overflow: hidden;
-}
-
-.Note__title___1Qhgd {
-    font-size: 20px;
-    font-weight: bold;
-    padding: 10px 0;
-}
-
-.Note__content___3nTM8 {
-    max-height: 90px
-}
-
-.Note__article___2RW1v {
+    display: block;
     padding: 15px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #8a8a8a;
+    text-align: right;
+}
+
+.Note__category___1QDcK a:hover {
+    background: #FFF;
+}
+
+.Note__category___1QDcK::before {
+    content: 'NoteBooks';
+    width: 100%;
+    display: inline-block;
+    background: #cecece;
+    text-align: center;
+    color: #676767;
+    margin-bottom: 60px;
 }
 
 .Note__main___1LJAh {
     width: 900px;
     max-width: 100%;
     padding-bottom: 20px;
-    left: 250px;
-    float: left;
+    padding-left: 200px;
     position: relative;
+}.NoteTool__container___3tUSS {
+    padding: 10px;
+    background: #ddd;
 }
 
-.Note__timestamp___2Ob6T {
+.NoteTool__link___3wW-k {
+    text-decoration: none;
+    color: #136ec1;
+}
+
+.NoteTool__link___3wW-k:hover {
+    color: #0a7ee8;
+}.NoteList__list___3pnHE {
+    width: 100%;
+    transition: opacity 1s;
+}
+
+.NoteList__desc___zFpfM {
+    box-sizing: border-box;
+    padding-left: 20px;
+    line-height: 30px;
+    overflow: hidden;
+}
+
+.NoteList__title___2ZiVX {
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px 0;
+}
+
+.NoteList__content___zQR1g {
+    max-height: 90px
+}
+
+.NoteList__timestamp___18ZMj {
     padding: 10px 5px;
     text-align: right;
     position: absolute;
@@ -63,25 +184,20 @@
     right: 0;
 }
 
-.Note__list___3XjtI {
-    width: 100%;
-    transition: opacity 1s;
-}
-
-.Note__media___2hKXE {
+.NoteList__media___3hwIg {
     float: left;
     width: 120px;
     padding: 3px;
     box-sizing: border-box;
 }
 
-.Note__media___2hKXE img {
+.NoteList__media___3hwIg img {
     filter: grayscale(100%);
     max-width: 100%;
     max-height: 100%;
 }
 
-.Note__item___2mw8e {
+.NoteList__item___2xQ0o {
     padding: 5px;
     min-height: 50px;
     max-height: 150px;
@@ -90,12 +206,40 @@
     display: block;
     text-decoration: none;
     color: #000;
-    transition: all 1s;
+    transition: all 0.5s;
     position: relative;
 }
 
-.Note__item___2mw8e:hover {
-    background: #f7fdff;
+.NoteList__item___2xQ0o:hover {
+    background: #fbfeff;
+}.NoteFull__article___FimxG {
+    padding: 15px;
+}
+
+.NoteFull__title___3ayQI {
+    font-size: 30px;
+    font-weight: bold;
+    line-height: 50px;
+    margin-bottom: 20px;
+}
+
+.NoteFull__desc___1S2uz {
+    font-size: 20px;
+    line-height: 30px;
+}
+
+.NoteFull__tool___1vtBh {
+    padding: 10px;
+}
+
+.NoteFull__tool___1vtBh a {
+    text-decoration: none;
+    color: #aaa;
+    padding: 8px;
+}
+
+.NoteFull__tool___1vtBh a:hover {
+    color: #848484;
 }form {
     padding: 10px;
 }
@@ -119,10 +263,25 @@
 .NoteForm__content___wUjsa {
     width: 100%;
     height: 100%;
-    min-height: 500px;
+    min-height: 200px;
     line-height: 25px;
     font-size: 16px;
     border: none;
     outline: none;
+}
+
+.NoteForm__create___whGUQ {
+    padding: 10px;
+    background: #eee;
+    display: block;
+    border-radius: 2px;
+    text-align: center;
+    text-decoration: none;
+    color: #8a8a8a;
+}
+
+.NoteForm__create___whGUQ:hover {
+    background: #8a8a8a;
+    color: #FFF;
 }
 /*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzdHlsZS5jc3MiLCJzb3VyY2VSb290IjoiIn0=*/

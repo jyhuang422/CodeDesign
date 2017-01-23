@@ -13,3 +13,17 @@
     font-size: 20px;
     line-height: 30px;
 }
+
+.tool {
+    padding: 10px;
+}
+
+.tool a {
+    text-decoration: none;
+    color: #aaa;
+    padding: 8px;
+}
+
+.tool a:hover {
+    color: #848484;
+}

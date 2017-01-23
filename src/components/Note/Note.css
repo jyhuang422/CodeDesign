@@ -12,23 +12,41 @@
 }
 
 .category {
-    width: 250px;
+    width: 200px;
     background: #eee;
     position: fixed;
     height: 100vh;
-    padding-top: 20px;
+    z-index: 1;
     float: left;
 }
 
 .category a {
+    display: block;
+    padding: 15px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #8a8a8a;
+    text-align: right;
+}
+
+.category a:hover {
+    background: #FFF;
+}
+
+.category::before {
+    content: 'NoteBooks';
+    width: 100%;
     display: inline-block;
-    margin: 5px;
+    background: #cecece;
+    text-align: center;
+    color: #676767;
+    margin-bottom: 60px;
 }
 
 .main {
     width: 900px;
     max-width: 100%;
     padding-bottom: 20px;
-    left: 250px;
+    padding-left: 200px;
     position: relative;
 }
