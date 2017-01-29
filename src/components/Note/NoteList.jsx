@@ -57,7 +57,12 @@ class noteList extends React.Component {
                 </p>
                 <ul className={styles.list} style={{opacity: isFetching ? '0' : '1'}}>
                     {items.map((id) => (
-                        <Link to={'/note/'+id} onClick={(e)=>{e.preventDefault(); this.viewFull(id)}} className={styles.item} key={'note_'+id}>
+                        <Link 
+                            to={'/note/'+id} 
+                            onClick={(e)=>{e.preventDefault(); this.viewFull(id)}} 
+                            className={styles.item} 
+                            key={'note_'+id}
+                        >
                             <div className={styles.media}>
                                 <img src={ posts[id]['img'] || '/dist/images/CodeDesign_logo.svg'} alt="" />
                             </div>

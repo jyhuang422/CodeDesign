@@ -6,7 +6,7 @@ import {
   POST_SUCCESS, EDIT_POST,
   POST_UPDATE_SUCCESS, POST_UPDATE_NOCHANGE,
   SELECT_POST, ADD_NEW_POST, POST_CREATE_SUCCESS,
-  POST_DELETE_SUCCESS
+  POST_DELETE_SUCCESS, EDITOR_CHANGE
 } from '../actions/noteAction'
 
 import deepAssign from 'deep-assign';
@@ -162,6 +162,11 @@ function selectedPost(state = {}, action) {
         updatedTitle: "",
         updatedContent: ""
       }
+    case EDITOR_CHANGE:
+      return {
+        ...state,
+        editorState: action.editorState
+      }
     case POST_CREATE_SUCCESS:
       return {
         ...state,
@@ -181,11 +186,6 @@ function selectedPost(state = {}, action) {
           return {
             ...state,
             updatedTitle: action.value
-          }
-        case 'noteModel.content':
-          return {
-            ...state,
-            updatedContent: action.value
           }
         default:
           return state

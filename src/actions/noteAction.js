@@ -171,6 +171,7 @@ export const deletePost = (id, subcategory) => ({
 
 export const SELECT_SUBCATEGORY = 'SELECT_SUBCATEGORY'
 export const SELECT_POST = 'SELECT_POST'
+export const EDITOR_CHANGE = 'EDITOR_CHANGE'
 export const INVALIDATE_SUBCATEGORY = 'INVALIDATE_SUBCATEGORY'
 export const EDIT_POST = 'EDIT_POST'
 
@@ -185,6 +186,13 @@ export function selectPost(id) {
   return {
     type: SELECT_POST,
     id
+  }
+}
+
+export function editorChange(editorState) {
+  return {
+    type: EDITOR_CHANGE,
+    editorState
   }
 }
 

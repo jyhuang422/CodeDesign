@@ -5,13 +5,20 @@ import classnames from 'classnames'
 import { fetchPostIfNeeded, editPost, updatePostIfNeeded, selectPost, addNewPost, createPost, deletePost } from 'actions/noteAction'
 import Noteform from './NoteForm'
 import { browserHistory } from 'react-router'
+import 'github-markdown-css/github-markdown.css'
+import { convertToRaw } from 'draft-js';
+import draftToHtml from 'draftjs-to-html';
+
+function createMarkup(content) {
+  return {__html: content};
+}
 
 class noteFull extends React.Component {
     constructor(props) {
         super(props)
         this.editPost = this.editPost.bind(this)
         this.updatePost = this.updatePost.bind(this)
-        this.createPost = this.createPost.bind(this)
+        //this.createPost = this.createPost.bind(this)
         this.deletePost = this.deletePost.bind(this)
     }
 
@@ -43,14 +50,15 @@ class noteFull extends React.Component {
     }
 
     updatePost(id) {
-        const { dispatch, current } = this.props
+        const { dispatch, current, editorState } = this.props
+        if(editorState) current.updatedContent = draftToHtml(convertToRaw(editorState.getCurrentContent()))
         dispatch(updatePostIfNeeded(id, current))
     }
 
-    createPost(id) {
+    /*createPost(id) {
         const { dispatch, current } = this.props
         dispatch(createPost(current))
-    }
+    }*/
 
     deletePost(id) {
         const { dispatch, post } = this.props
@@ -71,21 +79,15 @@ class noteFull extends React.Component {
                     </div>
                 }
                 { post && 
-                    <div>
+                    <div className={styles.article} style={{display: current.isEditing ? 'none': 'block'}}>
                         {post.img && 
                             <div style={{textAlign: 'center'}}>
                                 <img src={ post.img } alt="" />
                             </div>
                         }
-                        <article className={styles.article} style={{display: current.isEditing ? 'none': 'block'}}>
+                        <article className="markdown-body">
                             <h1 className={styles.title} style={{textAlign: 'center'}}>{ typeof(current.updatedTitle) === 'string' ?  current.updatedTitle : post.title }</h1>
-                            <p className={styles.desc}>
-                            { (typeof(current.updatedContent) === 'string' ? current.updatedContent : post.content).split('\n').map(function(item) {
-                                return (
-                                    <span>{item}<br /></span>
-                                )
-                            }) }
-                            </p>
+                            <div className={styles.desc} dangerouslySetInnerHTML={createMarkup((typeof(current.updatedContent) === 'string' ? current.updatedContent : post.content))}></div>
                         </article>
                     </div>
                 }
@@ -103,7 +105,8 @@ const mapStateToProps = (state = {}) => {
     return {
         current,
         post: posts && posts[current.id] || null,
-        selectedSubcategory
+        selectedSubcategory,
+        editorState: current.editorState
     }
 }
 

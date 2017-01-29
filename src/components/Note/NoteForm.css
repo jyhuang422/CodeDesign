@@ -35,7 +35,10 @@ form {
     border-radius: 2px;
     text-align: center;
     text-decoration: none;
+    border: 1px solid #ddd;
+    border-top: none;
     color: #8a8a8a;
+    transition: all 0.5s;
 }
 
 .create:hover {
