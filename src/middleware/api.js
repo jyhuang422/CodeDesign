@@ -7,11 +7,12 @@ const callApi = (endpoint, apiData, schema) => {
   const options = apiData || { method: "GET" }
 
   return fetch(fullUrl, options)
-    .then(response =>
-      response.json().then(json => {
+    .then(response => {
+      if(response.status == 404) throw new Error('Not Found')
+      return response.json().then(json => {
         return normalize(json, schema)
       })
-    );
+    });
 };
 
 export const CALL_API = Symbol('Call API')
@@ -61,8 +62,8 @@ export default store => next => action => {
 
   return callApi(endpoint, apiData, schema).then(
     response => next(actionWith({
-      response,
-      type: successType
+      type: successType,
+      response
     })),
     error => next(actionWith({
       type: failureType,

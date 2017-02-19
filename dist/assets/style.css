@@ -11,7 +11,7 @@ body:before {
     background: url('/dist/images/pexels-photo.jpg') no-repeat center;  
     max-width: 100%;
     height: 100%;
-    opacity: 0.04  
+    opacity: 0.06 
 }
 
 .main__nav___3Hn23 {
@@ -143,7 +143,7 @@ body:before {
 
 .Note__category___1QDcK {
     width: 200px;
-    background: #eee;
+    background: rgba(0,0,0,0.1);
     position: fixed;
     height: 100vh;
     z-index: 1;

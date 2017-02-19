@@ -13,7 +13,7 @@
 
 .category {
     width: 200px;
-    background: #eee;
+    background: rgba(0,0,0,0.1);
     position: fixed;
     height: 100vh;
     z-index: 1;

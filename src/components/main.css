@@ -11,7 +11,7 @@ body:before {
     background: url('/dist/images/pexels-photo.jpg') no-repeat center;  
     max-width: 100%;
     height: 100%;
-    opacity: 0.04  
+    opacity: 0.06 
 }
 
 .nav {

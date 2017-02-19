@@ -3,7 +3,7 @@ import { routerReducer } from 'react-router-redux'
 import {
   SELECT_SUBCATEGORY, INVALIDATE_SUBCATEGORY,
   POSTS_REQUEST, POSTS_SUCCESS, POSTS_FAIL,
-  POST_SUCCESS, EDIT_POST,
+  POST_REQUEST, POST_SUCCESS, POST_FAIL, EDIT_POST,
   POST_UPDATE_SUCCESS, POST_UPDATE_NOCHANGE,
   SELECT_POST, ADD_NEW_POST, POST_CREATE_SUCCESS,
   POST_DELETE_SUCCESS, EDITOR_CHANGE
@@ -146,6 +146,10 @@ function selectedPost(state = {}, action) {
         id: action.id,
         isNewPost: false,
         isEditing: false
+      }
+    case POST_FAIL:
+      return {
+        err: 'No Content'
       }
     case EDIT_POST:
       return {

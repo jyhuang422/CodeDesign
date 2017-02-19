@@ -34,6 +34,7 @@ class noteFull extends React.Component {
 
     componentWillReceiveProps(nextProps) {
         const { dispatch, params, current, selectedSubcategory, post } = nextProps
+        if(current.err) return;
         if(params.id && !current.id) {
             dispatch(selectPost(params.id))
             delete params.id
@@ -70,13 +71,19 @@ class noteFull extends React.Component {
         const id = current.id
         return (
             <div>
-                {!current.isNewPost && 
+                {!current.isNewPost && post && 
                     <div className={styles.tool}>
                         {current.isEditing ? <a href="#" onClick={(e)=>{e.preventDefault(); this.updatePost(id)}}>Save</a>
                                            : <a href="#" onClick={(e)=>{e.preventDefault(); this.editPost(id)}}>Edit</a>
                         }
                         <a href="#" onClick={(e)=>{e.preventDefault(); this.deletePost(id)}}>Delete</a>
                     </div>
+                }
+                { (!post && !current.err && !current.isEditing) &&
+                    <div>Loading ...</div>
+                }
+                { current.err &&
+                    <div>No Content</div>
                 }
                 { post && 
                     <div className={styles.article} style={{display: current.isEditing ? 'none': 'block'}}>
