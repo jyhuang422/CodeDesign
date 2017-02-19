@@ -2,7 +2,19 @@ html, body {
     height: 100%;
 }
 
-.main__btn___15aIZ {
+body:before {
+    content: '';
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    background: url('/dist/images/pexels-photo.jpg') no-repeat center;  
+    max-width: 100%;
+    height: 100%;
+    opacity: 0.04  
+}
+
+.main__nav___3Hn23 {
     margin: 5px 10px;
     text-decoration: none;
     display: inline-block;
@@ -14,58 +26,57 @@ html, body {
     color: #000;
 }
 
-.main__btn___15aIZ:before {
+.main__nav___3Hn23.main__notes___t99UK {
+    background: url('/dist/images/notepad.svg') no-repeat center;
+    background-size: 80%;
+}
+
+.main__nav___3Hn23.main__aboutme___wexAP {
+    background: url('/dist/images/avatar.svg') no-repeat center;
+    background-size: 70%;
+}
+
+.main__nav___3Hn23:before, .main__nav___3Hn23:after {
     content: '';
     display: block;
     width: 100%;
     height: 100%;
-    background: #ddd;
     margin-bottom: 5px;
     box-sizing: border-box;
 }
 
-.main__btn___15aIZ:hover:before {
-    border: 2px solid red;
-    content: '+';
-    color: red;
-    line-height: 100px;
-}
-
-.main__btn___15aIZ:hover:after {
-    content: '';
-    display: inline-block;
-    height: 100%;
-    width: 70%;
+.main__nav___3Hn23:hover:before {
     border: 2px solid #ddd;
-    box-sizing: border-box;
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    margin: auto;
+    border-right: 0;
+    width: 10px;
 }
 
-.main__btn___15aIZ.main__lg___1PdLM {
+.main__nav___3Hn23:hover:after {
+    border: 2px solid #ddd;
+    width: 10px;
+    border-left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.main__nav___3Hn23:active:before, .main__nav___3Hn23:active:after {
+    border-color: red;
+}
+
+.main__nav___3Hn23.main__lg___1PdLM {
     width: 140px;
     height: 140px;
     font-size: 20px;
 }
 
-.main__btn___15aIZ.main__lg___1PdLM:before {
-    line-height: 140px;
-}
-
-.main__btn___15aIZ.main__sm___1m6BU {
+.main__nav___3Hn23.main__sm___1m6BU {
     width: 60px;
     height: 60px;
     font-size: 15px;
 }
 
-.main__btn___15aIZ.main__sm___1m6BU:before{
-    line-height: 60px;
-}
-
-.main__btn___15aIZ.main__sm___1m6BU:hover:before {
+.main__nav___3Hn23.main__sm___1m6BU:hover:before {
     border-width: 1px;
 }
 
@@ -74,10 +85,25 @@ html, body {
     padding: 5px;
     box-sizing: border-box;
     height: 100px;
-    text-align: right;
+    text-align: center;
     width: 100%;
     position: fixed;
     z-index: 1;
+}
+
+.main__headerLogo___2rvSF {
+    height: 100%;
+    display: inline-block;
+}
+
+.main__headerLogo___2rvSF img {
+    height: 100%;
+    filter: grayscale(100%);
+    transition: all .5s;
+}
+
+.main__headerLogo___2rvSF img:hover {
+    filter: grayscale(0%);
 }
 
 

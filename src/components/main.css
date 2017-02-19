@@ -2,7 +2,19 @@ html, body {
     height: 100%;
 }
 
-.btn {
+body:before {
+    content: '';
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    background: url('/dist/images/pexels-photo.jpg') no-repeat center;  
+    max-width: 100%;
+    height: 100%;
+    opacity: 0.04  
+}
+
+.nav {
     margin: 5px 10px;
     text-decoration: none;
     display: inline-block;
@@ -14,58 +26,57 @@ html, body {
     color: #000;
 }
 
-.btn:before {
+.nav.notes {
+    background: url('/dist/images/notepad.svg') no-repeat center;
+    background-size: 80%;
+}
+
+.nav.aboutme {
+    background: url('/dist/images/avatar.svg') no-repeat center;
+    background-size: 70%;
+}
+
+.nav:before, .nav:after {
     content: '';
     display: block;
     width: 100%;
     height: 100%;
-    background: #ddd;
     margin-bottom: 5px;
     box-sizing: border-box;
 }
 
-.btn:hover:before {
-    border: 2px solid red;
-    content: '+';
-    color: red;
-    line-height: 100px;
-}
-
-.btn:hover:after {
-    content: '';
-    display: inline-block;
-    height: 100%;
-    width: 70%;
+.nav:hover:before {
     border: 2px solid #ddd;
-    box-sizing: border-box;
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    margin: auto;
+    border-right: 0;
+    width: 10px;
 }
 
-.btn.lg {
+.nav:hover:after {
+    border: 2px solid #ddd;
+    width: 10px;
+    border-left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.nav:active:before, .nav:active:after {
+    border-color: red;
+}
+
+.nav.lg {
     width: 140px;
     height: 140px;
     font-size: 20px;
 }
 
-.btn.lg:before {
-    line-height: 140px;
-}
-
-.btn.sm {
+.nav.sm {
     width: 60px;
     height: 60px;
     font-size: 15px;
 }
 
-.btn.sm:before{
-    line-height: 60px;
-}
-
-.btn.sm:hover:before {
+.nav.sm:hover:before {
     border-width: 1px;
 }
 
@@ -74,10 +85,25 @@ html, body {
     padding: 5px;
     box-sizing: border-box;
     height: 100px;
-    text-align: right;
+    text-align: center;
     width: 100%;
     position: fixed;
     z-index: 1;
+}
+
+.headerLogo {
+    height: 100%;
+    display: inline-block;
+}
+
+.headerLogo img {
+    height: 100%;
+    filter: grayscale(100%);
+    transition: all .5s;
+}
+
+.headerLogo img:hover {
+    filter: grayscale(0%);
 }
 
 

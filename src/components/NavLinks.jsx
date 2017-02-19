@@ -15,7 +15,7 @@ const navLinks = ({page, onNavTo, btnSize, style={}}) => {
             //let classes = classnames('btn-category', (btnSize ? btnSize : ''));
             let btn = (
                 <Link
-                    className={styles.btn+" "+styles[btnSize]}
+                    className={styles.nav+" "+styles[btnSize]+" "+styles[data]}
                     key={'main_'+data}
                     to={path}
                     onClick = {(e) => {
@@ -48,7 +48,7 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps = (state) => {
     return {
         page: {
-            'notes': state.notes,
+            notes: state.notes,
             aboutme: state.aboutme
         }
     }

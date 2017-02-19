@@ -24,6 +24,7 @@ var mongoose = require('mongoose');
 
 app.use('/dist/assets', express.static(__dirname + '/dist/assets'));
 app.use('/dist/images', express.static(__dirname + '/dist/images'));
+app.use('/dist/favicon.ico', express.static(__dirname + '/dist/favicon.ico'));
 //app.use('/code.json', express.static(__dirname + '/code.json'));
 //app.use('/design.json', express.static(__dirname + '/design.json'));
 
@@ -155,6 +156,7 @@ function renderFullPage(html, preloadedState) {
             <title>CodeDesign</title>
             <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" />
             <link rel="stylesheet" type="text/css" href="/dist/assets/style.css" />
+            <link rel="icon" type="image/png" href="/dist/images/favicon.png">
           </head>
           <body>
             <div id="root">${html}</div>

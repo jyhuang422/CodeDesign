@@ -6,7 +6,7 @@ import NavLinks from 'components/NavLinks'
 const IndexRaw = ({current}) => (
   <div>
       <div style={{display: current ==='/' ? 'block' : 'none'}}>
-        <div className={styles.logo}><img src="/dist/images/CodeDesign_logo.svg" /></div>
+        <div className={styles.logo}><img src="/dist/images/CodeDesign_logo_index.svg" /></div>
         <NavLinks btnSize="lg" />
       </div>
   </div>
