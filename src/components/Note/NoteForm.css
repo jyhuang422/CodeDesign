@@ -11,6 +11,7 @@ form {
     border: none;
     border-bottom: 1px solid #eee;
     outline: none;
+    background: none;
 }
 
 .title:focus {

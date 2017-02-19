@@ -46,13 +46,13 @@ body:before {
 }
 
 .main__nav___3Hn23:hover:before {
-    border: 2px solid #ddd;
+    border: 2px solid #bbb;
     border-right: 0;
     width: 10px;
 }
 
 .main__nav___3Hn23:hover:after {
-    border: 2px solid #ddd;
+    border: 2px solid #bbb;
     width: 10px;
     border-left: 0;
     position: absolute;
@@ -94,6 +94,8 @@ body:before {
 .main__headerLogo___2rvSF {
     height: 100%;
     display: inline-block;
+    box-sizing: border-box;
+    padding: 5px;
 }
 
 .main__headerLogo___2rvSF img {
@@ -117,6 +119,15 @@ body:before {
 .main__logo___3Nfs1 img {
     width: 100%;
     height: 100%;
+}
+
+.main__aboutmeMain___2cVaj {
+    padding-top: 100px;
+    text-align: center;
+}
+.main__aboutmeMain___2cVaj img {
+    width: 50%;
+    max-width: 500px;
 }.Note__wrap___2fUNS {
     width: 100%;
     padding-top: 100px;
@@ -340,6 +351,7 @@ body:before {
     border: none;
     border-bottom: 1px solid #eee;
     outline: none;
+    background: none;
 }
 
 .NoteForm__title___rX0ku:focus {
