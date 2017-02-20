@@ -16,7 +16,7 @@ const bodyParser = require('body-parser')
 const appStoreCreate = require('reducers').default
 const loggerMiddleware = createLogger();
 const Routes = require('components/Routes').default
-const dbkey = require('./dbkey.js').key
+//const dbkey = require('./dbkey.js').key
 
 const express = require('express')
 const app = express()
