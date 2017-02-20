@@ -1,7 +1,7 @@
 require.extensions['.css'] = () => {
   return;
 };
-require('app-module-path').addPath(__dirname+'/src/');
+require('app-module-path').addPath(__dirname+'/src/')
 import React from 'react'
 import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
@@ -11,86 +11,125 @@ import createLogger from 'redux-logger'
 import { match, RouterContext, browserHistory, createMemoryHistory } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
 
-const bodyParser = require('body-parser');
+const bodyParser = require('body-parser')
 
-const appStoreCreate = require('reducers').default;
+const appStoreCreate = require('reducers').default
 const loggerMiddleware = createLogger();
-const Routes = require('components/Routes').default;
-const dbkey = require('./dbkey.js').key;
+const Routes = require('components/Routes').default
+const dbkey = require('./dbkey.js').key
 
-const express = require('express');
-const app = express();
-var mongoose = require('mongoose');
+const express = require('express')
+const app = express()
+var mongoose = require('mongoose')
 
-app.use('/dist/assets', express.static(__dirname + '/dist/assets'));
-app.use('/dist/images', express.static(__dirname + '/dist/images'));
-app.use('/dist/favicon.ico', express.static(__dirname + '/dist/favicon.ico'));
-//app.use('/code.json', express.static(__dirname + '/code.json'));
-//app.use('/design.json', express.static(__dirname + '/design.json'));
+//Fake data
+var fs = require('fs')
+
+app.use('/dist/assets', express.static(__dirname + '/dist/assets'))
+app.use('/dist/images', express.static(__dirname + '/dist/images'))
+app.use('/dist/favicon.ico', express.static(__dirname + '/dist/favicon.ico'))
+app.use('/data', express.static(__dirname + '/data'))
 
 app.use(bodyParser.json());
 app.all('/api/*', function(req, res) {
     const NoteModel = require('./model/notes')
     const apiPath = req.url.split('/api/')[1]
     const mainApi = apiPath.split('/')
+    const apiHandler = function(err, noteData) {
+      if (err) res.status(404).send('Not Found')
+      mongoose.disconnect(function() {
+        console.log('connection close!!')
+      })
+      res.send(noteData)
+    }
     switch(mainApi[0]) {
       case "notes":
         const subcategory = mainApi[1]
-        mongoose.connect(dbkey);
-        NoteModel.find({subcategory: {$in: [subcategory]}}, function(err, notes) {
+        
+        // For Fake Data
+        fs.readFile(__dirname+'/data/note.json', 'utf8', function (err, data) {
           if (err) throw err;
-          let final = {}
-          mongoose.disconnect(function() {
-            console.log('connection close!!')
-          })
-          res.send(notes)
+          res.send(JSON.parse(data).list.filter(function(note) {
+            return note.subcategory.indexOf(subcategory) > -1
+          }));
         });
+        
+        // For real data
+        //mongoose.connect(dbkey);
+        //NoteModel.find({subcategory: {$in: [subcategory]}}, apiHandler)
+        
         break;
       case "note":
         const id = mainApi[1]
         const method = req.method
-        mongoose.connect(dbkey);
+        //mongoose.connect(dbkey)
 
         if(method === 'GET') {
-          NoteModel.findById(id, function(err, note) {
-            if (err) res.status(404).send('Not Found');
-            mongoose.disconnect(function() {
-              console.log('connection close!!')
-            })
+          // For Fake Data
+          fs.readFile(__dirname+'/data/note.json', 'utf8', function (err, data) {
+            if (err) throw err
+            const note = JSON.parse(data).list.filter(function(note) {
+              return note._id === id
+            })[0]
+            note ? res.send(note) : res.status(404).send('Not Found')
+          });
+
+          // For real data
+          //NoteModel.findById(id, apiHandler)
+        } else if(method === 'PUT') {
+           // For Fake Data
+          fs.readFile(__dirname+'/data/note.json', 'utf8', function (err, data) {
+            if (err) throw err
+            let origData = JSON.parse(data).list
+            let note = origData.filter(function(note) {
+              return note._id === id
+            })[0]
+            note = Object.assign({}, note, req.body)
+            fs.writeFileSync(__dirname+'/data/note.json', JSON.stringify({"list": origData.map(item => {
+              return item._id === id ? note : item
+            })}))
             res.send(note)
           });
-        } else if(method === 'PUT') {
-          NoteModel.findByIdAndUpdate(id, {$set: req.body}, {new: true}, function(err, note) {
-            if(err) throw err;
-            mongoose.disconnect(function() {
-              console.log('connection close!!')
-            })
-            res.send(note)
-          })
+
+          // For real data
+          //NoteModel.findByIdAndUpdate(id, {$set: req.body}, {new: true}, apiHandler)
         } else if(method === 'DELETE') {
-          NoteModel.findByIdAndRemove(id, function(err, note) {
-            if(err) throw err;
-            mongoose.disconnect(function() {
-              console.log('connection close!!')
-            })
+          // For Fake Data
+          fs.readFile(__dirname+'/data/note.json', 'utf8', function (err, data) {
+            let origData = JSON.parse(data).list
+            let note = origData.filter(function(note) {
+              return note._id === id
+            })[0]
+            fs.writeFileSync(__dirname+'/data/note.json', JSON.stringify({"list": origData.filter(item => {
+              return item._id !== id
+            })}))
             res.send(note)
           })
+
+          // For real data
+          //NoteModel.findByIdAndRemove(id, apiHandler)
         } else if(method === 'POST') {
-          const newPost = new NoteModel(req.body)
-          newPost.save(function(err, note) {
-            if(err) throw err;
-            mongoose.disconnect(function() {
-              console.log('connection close!!')
-            })
-            res.send(note)
+          // For Fake Data
+          let newData = Object.assign({}, req.body, {
+            _id: Date.now().toString()
           })
+          fs.readFile(__dirname+'/data/note.json', 'utf8', function (err, data) {
+            let origData = JSON.parse(data).list
+            origData.push(newData)
+            fs.writeFileSync(__dirname+'/data/note.json', JSON.stringify({"list": origData}))
+          })
+          res.send(newData)
+
+          // For real data
+          //const newPost = new NoteModel(req.body)
+          //newPost.save(apiHandler)
         }
         break;
       default:
         res.send({})
     }
 });
-app.use(handleRender);
+app.use(handleRender)
 
 
 function handleRender(req, res) {
@@ -102,7 +141,7 @@ function handleRender(req, res) {
         aboutme: {}
     }
     
-    const store = appStoreCreate(preloadedState);
+    const store = appStoreCreate(preloadedState)
 
     const history = syncHistoryWithStore(createMemoryHistory(), store)
     
@@ -148,5 +187,5 @@ function renderFullPage(html, preloadedState) {
 }
 
 app.listen(3000, function() {
-  console.log('listening on 3000');
+  console.log('listening on 3000')
 });

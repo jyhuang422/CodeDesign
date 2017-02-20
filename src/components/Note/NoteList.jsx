@@ -55,6 +55,9 @@ class noteList extends React.Component {
                       </span>
                     }
                 </p>
+                {!isFetching && items.length == 0 && 
+                    <div>No matched contents</div>
+                }
                 <ul className={styles.list} style={{opacity: isFetching ? '0' : '1'}}>
                     {items.map((id) => (
                         <Link 
