@@ -1,6 +1,7 @@
 require.extensions['.css'] = () => {
   return;
 };
+require('./server.babel');
 require('app-module-path').addPath(__dirname+'/src/')
 import React from 'react'
 import { createStore, applyMiddleware } from 'redux'
@@ -15,7 +16,7 @@ const bodyParser = require('body-parser')
 
 const appStoreCreate = require('reducers').default
 const loggerMiddleware = createLogger();
-const Routes = require('components/Routes').default
+const Routes = require('components/Routes');
 //const dbkey = require('./dbkey.js').key
 
 const express = require('express')
@@ -137,7 +138,7 @@ function handleRender(req, res) {
 
     let preloadedState = {
         index: {},
-        note: {},
+        notes: {},
         aboutme: {}
     }
     
@@ -153,14 +154,12 @@ function handleRender(req, res) {
                     <RouterContext {...renderProps} />
                 </Provider>
             )
+            const finalState = store.getState();
+            res.send(renderFullPage(html, finalState));
         } else {
             res.status(404).send('Not found');
         }
     });
-
-    const finalState = store.getState();
-
-    res.send(renderFullPage(html, finalState));
 }
 
 function renderFullPage(html, preloadedState) {

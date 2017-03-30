@@ -22,5 +22,4 @@ const Routes = (
     </Route>
 );
 
-
 export default Routes 

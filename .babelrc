@@ -1,3 +1,9 @@
 {
-    "presets": ["es2015", "react", "stage-2"]
+    "presets": ["es2015", "react", "stage-2"],
+    "plugins": [
+        "transform-runtime",
+        "add-module-exports",
+        "transform-decorators-legacy",
+        "transform-react-display-name"
+      ]
 }

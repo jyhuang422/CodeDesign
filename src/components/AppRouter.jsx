@@ -10,7 +10,7 @@ const store = appStoreCreate();
 const history = syncHistoryWithStore(browserHistory, store);
 
 const AppRouter = () => (
-  <Router history={history} routes={Routes} />
+  <Router history={history}>{Routes}</Router>
 )
 
 export default AppRouter
