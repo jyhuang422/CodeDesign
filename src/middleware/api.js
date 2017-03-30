@@ -1,6 +1,6 @@
 import { normalize, schema } from 'normalizr'
 
-const API_ROOT = `http://localhost:3000/api/`;
+const API_ROOT = `/api/`;
 
 const callApi = (endpoint, apiData, schema) => {
   const fullUrl = (endpoint.indexOf(API_ROOT) === -1) ? API_ROOT + endpoint : endpoint
