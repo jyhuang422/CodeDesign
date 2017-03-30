@@ -197,6 +197,6 @@ function renderFullPage(html, preloadedState) {
   return '\n        <!doctype html>\n        <html lang="tw">\n          <head>\n            <meta charset="utf-8">\n            <meta name="viewport" content="width=device-width, initial-scale=1">\n            <title>CodeDesign</title>\n            <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" />\n            <link rel="stylesheet" type="text/css" href="/dist/assets/style.css" />\n            <link rel="icon" type="image/png" href="/dist/images/favicon.png">\n          </head>\n          <body>\n            <div id="root">' + html + '</div>\n            <script>\n              window.__PRELOADED_STATE__ = ' + (0, _stringify2.default)(preloadedState) + '\n            </script>\n            <script type="text/javascript" charset="utf8" src="/dist/assets/index.js"></script>\n          </body>\n        </html>\n    ';
 }
 
-app.listen(3000, function () {
-  console.log('listening on 3000');
+app.listen(process.env.PORT || '3000', function () {
+  console.log('listening on ' + process.env.PORT);
 });
