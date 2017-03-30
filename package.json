@@ -23,7 +23,22 @@
     "url": "https://github.com/jyhuang422/CodeDesign/issues"
   },
   "homepage": "https://github.com/jyhuang422/CodeDesign#readme",
-  "devDependencies": {
+  "dependencies": {
+    "app-module-path": "^2.1.0",
+    "css-loader": "^0.26.1",
+    "deep-assign": "^2.0.0",
+    "draft-js": "^0.9.1",
+    "nodemon": "^1.11.0",
+    "draftjs-to-html": "^0.5.0",
+    "express": "^4.14.0",
+    "github-markdown-css": "^2.4.1",
+    "mongodb": "^2.2.16",
+    "mongoose": "^4.7.5",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "react-redux-form": "^1.5.3",
+    "reset-css": "^2.2.0",
+    "style-loader": "^0.13.1",
     "babel-cli": "^6.18.0",
     "babel-core": "^6.21.0",
     "babel-loader": "^6.2.10",
@@ -55,22 +70,5 @@
     "sass-loader": "^4.1.1",
     "style-loader": "^0.13.1",
     "webpack-stream": "^3.2.0"
-  },
-  "dependencies": {
-    "app-module-path": "^2.1.0",
-    "css-loader": "^0.26.1",
-    "deep-assign": "^2.0.0",
-    "draft-js": "^0.9.1",
-    "nodemon": "^1.11.0",
-    "draftjs-to-html": "^0.5.0",
-    "express": "^4.14.0",
-    "github-markdown-css": "^2.4.1",
-    "mongodb": "^2.2.16",
-    "mongoose": "^4.7.5",
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2",
-    "react-redux-form": "^1.5.3",
-    "reset-css": "^2.2.0",
-    "style-loader": "^0.13.1"
   }
 }
