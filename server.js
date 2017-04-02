@@ -16,7 +16,8 @@ const bodyParser = require('body-parser')
 
 const appStoreCreate = require('reducers').default
 const loggerMiddleware = createLogger();
-const Routes = require('components/Routes');
+const Routes = require('components/Routes.jsx');
+//import Routes from './src/components/Routes.jsx';
 //const dbkey = require('./dbkey.js').key
 
 const express = require('express')

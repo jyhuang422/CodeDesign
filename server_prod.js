@@ -43,7 +43,8 @@ var bodyParser = require('body-parser');
 
 var appStoreCreate = require('reducers').default;
 var loggerMiddleware = (0, _reduxLogger2.default)();
-var Routes = require('components/Routes');
+var Routes = require('components/Routes.jsx');
+//import Routes from './src/components/Routes.jsx';
 //const dbkey = require('./dbkey.js').key
 
 var express = require('express');

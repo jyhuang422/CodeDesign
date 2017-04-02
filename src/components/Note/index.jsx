@@ -28,8 +28,7 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-const Note = connect(
+
+export const Note = connect(
   mapDispatchToProps
 )(note);
-
-export default Note
