@@ -189,8 +189,7 @@ export default function(parameters) {
           </html>
       `
   }
-  let port = process.env.PORT || '3000';
-  app.listen(port, function() {
-    console.log('listening on ' + port)
+  app.listen(process.env.PORT || '3000', function() {
+    console.log('listening on ' + (process.env.PORT || '3000'))
   });
 }
