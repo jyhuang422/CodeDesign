@@ -14,7 +14,7 @@ body:before {
     opacity: 0.06 
 }
 
-.main__nav___3Hn23 {
+.main__nav___crjuS {
     margin: 5px 10px;
     text-decoration: none;
     display: inline-block;
@@ -26,17 +26,17 @@ body:before {
     color: #000;
 }
 
-.main__nav___3Hn23.main__notes___t99UK {
+.main__nav___crjuS.main__notes___1dSlD {
     background: url('/dist/images/notepad.svg') no-repeat center;
     background-size: 80%;
 }
 
-.main__nav___3Hn23.main__aboutme___wexAP {
+.main__nav___crjuS.main__aboutme___35L33 {
     background: url('/dist/images/avatar.svg') no-repeat center;
     background-size: 70%;
 }
 
-.main__nav___3Hn23:before, .main__nav___3Hn23:after {
+.main__nav___crjuS:before, .main__nav___crjuS:after {
     content: '';
     display: block;
     width: 100%;
@@ -45,13 +45,13 @@ body:before {
     box-sizing: border-box;
 }
 
-.main__nav___3Hn23:hover:before {
+.main__nav___crjuS:hover:before {
     border: 2px solid #bbb;
     border-right: 0;
     width: 10px;
 }
 
-.main__nav___3Hn23:hover:after {
+.main__nav___crjuS:hover:after {
     border: 2px solid #bbb;
     width: 10px;
     border-left: 0;
@@ -60,27 +60,27 @@ body:before {
     top: 0;
 }
 
-.main__nav___3Hn23:active:before, .main__nav___3Hn23:active:after {
+.main__nav___crjuS:active:before, .main__nav___crjuS:active:after {
     border-color: red;
 }
 
-.main__nav___3Hn23.main__lg___1PdLM {
+.main__nav___crjuS.main__lg___1kTYI {
     width: 140px;
     height: 140px;
     font-size: 20px;
 }
 
-.main__nav___3Hn23.main__sm___1m6BU {
+.main__nav___crjuS.main__sm___1PnAI {
     width: 60px;
     height: 60px;
     font-size: 15px;
 }
 
-.main__nav___3Hn23.main__sm___1m6BU:hover:before {
+.main__nav___crjuS.main__sm___1PnAI:hover:before {
     border-width: 1px;
 }
 
-.main__header___OotjU {
+.main__header___3qDUv {
     background: #999;
     padding: 5px;
     box-sizing: border-box;
@@ -91,57 +91,57 @@ body:before {
     z-index: 1;
 }
 
-.main__headerLogo___2rvSF {
+.main__headerLogo___3PbbG {
     height: 100%;
     display: inline-block;
     box-sizing: border-box;
     padding: 5px;
 }
 
-.main__headerLogo___2rvSF img {
+.main__headerLogo___3PbbG img {
     height: 100%;
     filter: grayscale(100%);
     transition: all .5s;
 }
 
-.main__headerLogo___2rvSF img:hover {
+.main__headerLogo___3PbbG img:hover {
     filter: grayscale(0%);
 }
 
 
-.main__logo___3Nfs1 {
+.main__logo___oOUT3 {
     width: 70%;
     max-width: 580px;
     margin: auto;
     text-align: center;
 }
 
-.main__logo___3Nfs1 img {
+.main__logo___oOUT3 img {
     width: 100%;
     height: 100%;
 }
 
-.main__aboutmeMain___2cVaj {
+.main__aboutmeMain___2DKHk {
     padding-top: 100px;
     text-align: center;
 }
-.main__aboutmeMain___2cVaj img {
+.main__aboutmeMain___2DKHk img {
     width: 50%;
     max-width: 500px;
-}.Note__wrap___2fUNS {
+}.Note__wrap___3kPz1 {
     width: 100%;
     padding-top: 100px;
     box-sizing: border-box;
     display: flex;
 }
 
-.Note__wrap___2fUNS::after {
+.Note__wrap___3kPz1::after {
     content: '';
     clear: both;
     display: table;
 }
 
-.Note__category___1QDcK {
+.Note__category___3FOG2 {
     width: 200px;
     background: rgba(0,0,0,0.1);
     position: fixed;
@@ -150,7 +150,7 @@ body:before {
     float: left;
 }
 
-.Note__category___1QDcK a {
+.Note__category___3FOG2 a {
     display: block;
     padding: 15px;
     text-decoration: none;
@@ -159,11 +159,11 @@ body:before {
     text-align: right;
 }
 
-.Note__category___1QDcK a:hover {
+.Note__category___3FOG2 a:hover {
     background: #FFF;
 }
 
-.Note__category___1QDcK::before {
+.Note__category___3FOG2::before {
     content: 'NoteBooks';
     width: 100%;
     display: inline-block;
@@ -173,47 +173,47 @@ body:before {
     margin-bottom: 60px;
 }
 
-.Note__main___1LJAh {
+.Note__main___2RgXT {
     width: 900px;
     max-width: 100%;
     padding-bottom: 20px;
     padding-left: 200px;
     position: relative;
-}.NoteTool__container___3tUSS {
+}.NoteTool__container___hB7uL {
     padding: 10px;
     background: #ddd;
 }
 
-.NoteTool__link___3wW-k {
+.NoteTool__link___1dXUO {
     text-decoration: none;
     color: #136ec1;
 }
 
-.NoteTool__link___3wW-k:hover {
+.NoteTool__link___1dXUO:hover {
     color: #0a7ee8;
-}.NoteList__list___3pnHE {
+}.NoteList__list___34VFY {
     width: 100%;
     transition: opacity 1s;
 }
 
-.NoteList__desc___zFpfM {
+.NoteList__desc___1tyP0 {
     box-sizing: border-box;
     padding-left: 20px;
     line-height: 30px;
     overflow: hidden;
 }
 
-.NoteList__title___2ZiVX {
+.NoteList__title___exVe5 {
     font-size: 20px;
     font-weight: bold;
     padding: 10px 0;
 }
 
-.NoteList__content___zQR1g {
+.NoteList__content___3R_8s {
     max-height: 90px
 }
 
-.NoteList__timestamp___18ZMj {
+.NoteList__timestamp___2kMMX {
     padding: 10px 5px;
     text-align: right;
     position: absolute;
@@ -221,20 +221,20 @@ body:before {
     right: 0;
 }
 
-.NoteList__media___3hwIg {
+.NoteList__media___caDCx {
     float: left;
     width: 120px;
     padding: 3px;
     box-sizing: border-box;
 }
 
-.NoteList__media___3hwIg img {
+.NoteList__media___caDCx img {
     filter: grayscale(100%);
     max-width: 100%;
     max-height: 100%;
 }
 
-.NoteList__item___2xQ0o {
+.NoteList__item___3EbAY {
     padding: 5px;
     min-height: 50px;
     max-height: 150px;
@@ -247,36 +247,36 @@ body:before {
     position: relative;
 }
 
-.NoteList__item___2xQ0o:hover {
+.NoteList__item___3EbAY:hover {
     background: #fbfeff;
-}.NoteFull__article___FimxG {
+}.NoteFull__article___3AU13 {
     padding: 15px;
 }
 
-.NoteFull__title___3ayQI {
+.NoteFull__title___1YO3S {
     font-size: 30px;
     font-weight: bold;
     line-height: 50px;
     margin-bottom: 20px;
 }
 
-.NoteFull__desc___1S2uz {
+.NoteFull__desc___L29VG {
     line-height: 30px;
 }
 
-.NoteFull__tool___1vtBh {
+.NoteFull__tool___3xsRr {
     padding: 10px;
 }
 
-.NoteFull__tool___1vtBh a {
+.NoteFull__tool___3xsRr a {
     text-decoration: none;
     color: #aaa;
     padding: 8px;
 }
 
-.NoteFull__tool___1vtBh a:hover {
+.NoteFull__tool___3xsRr a:hover {
     color: #848484;
-}.RichEditor__root___zWPfE {
+}.RichEditor__root___2sCF1 {
   background: #fff;
   border: 1px solid #ddd;
   font-family: 'Georgia', serif;
@@ -284,28 +284,28 @@ body:before {
   padding: 15px;
 }
 
-.RichEditor__editor___1Ji5n {
+.RichEditor__editor___3bqAx {
   border-top: 1px solid #ddd;
   cursor: text;
   font-size: 16px;
   margin-top: 10px;
 }
 
-.RichEditor__editor___1Ji5n .public-DraftEditorPlaceholder-root,
-.RichEditor__editor___1Ji5n .public-DraftEditor-content {
+.RichEditor__editor___3bqAx .public-DraftEditorPlaceholder-root,
+.RichEditor__editor___3bqAx .public-DraftEditor-content {
   margin: 0 -15px -15px;
   padding: 15px;
 }
 
-.RichEditor__editor___1Ji5n .public-DraftEditor-content {
+.RichEditor__editor___3bqAx .public-DraftEditor-content {
   min-height: 100px;
 }
 
-.RichEditor__hidePlaceholder___1-nDN .public-DraftEditorPlaceholder-root {
+.RichEditor__hidePlaceholder___2Inin .public-DraftEditorPlaceholder-root {
   display: none;
 }
 
-.RichEditor__editor___1Ji5n .RichEditor__blockquote___2hXqu {
+.RichEditor__editor___3bqAx .RichEditor__blockquote___3NcS5 {
   border-left: 5px solid #eee;
   color: #666;
   font-family: 'Hoefler Text', 'Georgia', serif;
@@ -314,21 +314,21 @@ body:before {
   padding: 10px 20px;
 }
 
-.RichEditor__editor___1Ji5n .public-DraftStyleDefault-pre {
+.RichEditor__editor___3bqAx .public-DraftStyleDefault-pre {
   background-color: rgba(0, 0, 0, 0.05);
   font-family: 'Inconsolata', 'Menlo', 'Consolas', monospace;
   font-size: 16px;
   padding: 20px;
 }
 
-.RichEditor__controls___29Om- {
+.RichEditor__controls___3HuqT {
   font-family: 'Helvetica', sans-serif;
   font-size: 14px;
   margin-bottom: 5px;
   user-select: none;
 }
 
-.RichEditor__styleButton___2JGpW {
+.RichEditor__styleButton___29oMX {
   color: #999;
   cursor: pointer;
   margin-right: 16px;
@@ -336,13 +336,13 @@ body:before {
   display: inline-block;
 }
 
-.RichEditor__activeButton___3jWOi {
+.RichEditor__activeButton___1T4xu {
   color: #5890ff;
 }form {
     padding: 10px;
 }
 
-.NoteForm__title___rX0ku {
+.NoteForm__title___1yKjf {
     width: 100%;
     height: 30px;
     line-height: 30px;
@@ -354,12 +354,12 @@ body:before {
     background: none;
 }
 
-.NoteForm__title___rX0ku:focus {
+.NoteForm__title___1yKjf:focus {
     border: none;
     border-bottom: 1px solid #ddd;
 }
 
-.NoteForm__content___wUjsa {
+.NoteForm__content___3_M4Z {
     width: 100%;
     height: 100%;
     min-height: 200px;
@@ -369,7 +369,7 @@ body:before {
     outline: none;
 }
 
-.NoteForm__create___whGUQ {
+.NoteForm__create___g-Nyh {
     padding: 10px;
     background: #eee;
     display: block;
@@ -382,7 +382,7 @@ body:before {
     transition: all 0.5s;
 }
 
-.NoteForm__create___whGUQ:hover {
+.NoteForm__create___g-Nyh:hover {
     background: #8a8a8a;
     color: #FFF;
 }

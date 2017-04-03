@@ -4,9 +4,9 @@ var rootFolder = path.join(__dirname, '../');
 
 module.exports = {
   watch: true,
-  context: path.join(rootFolder, 'src'),
+  //context: path.join(rootFolder, 'src'),
   entry: [
-    'index'
+    './src/index'
   ],
   output: {
     path: path.join(rootFolder, 'dist/assets'),

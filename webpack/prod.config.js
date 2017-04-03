@@ -4,9 +4,9 @@ var rootFolder = path.join(__dirname, '../');
 var webpack = require('webpack');
 
 module.exports = {
-  context: path.join(rootFolder, 'src'),
+  //context: path.join(rootFolder, 'src'),
   entry: [
-    'index'
+    './src/index'
   ],
   output: {
     path: path.join(rootFolder, 'dist/assets'),
@@ -21,7 +21,7 @@ module.exports = {
     extensions: ['.js', '.jsx']
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
         loaders: ['babel-loader'],

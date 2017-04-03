@@ -4,10 +4,24 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node ./server_prod.js",
-    "build": "concurrently \"./node_modules/.bin/babel server.js --out-file server_prod.js --presets es2015,stage-2\" \"webpack --config webpack/prod.config.js\"",
+    "start": "node ./start-server.babel",
+    "build": "concurrently \"better-npm-run wc\" \"better-npm-run ws\"",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "concurrently --kill-others \"DEBUG=express:* ./node_modules/.bin/nodemon server.js --exec ./node_modules/.bin/babel-node\" \"webpack --config webpack/dev.config.js\""
+  },
+  "betterScripts": {
+    "wc": {
+      "command": "webpack --config \"./webpack/webpack.config.client.babel.js\" --colors --display-error-details",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    },
+    "ws": {
+      "command": "webpack --config \"./webpack/webpack.config.server.babel.js\" --colors --display-error-details",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    }
   },
   "repository": {
     "type": "git",
@@ -40,6 +54,7 @@
     "classnames": "^2.2.5",
     "concurrently": "^3.4.0",
     "css-loader": "^0.26.1",
+    "css-modules-require-hook": "^4.0.6",
     "deep-assign": "^2.0.0",
     "draft-js": "^0.9.1",
     "draftjs-to-html": "^0.5.0",
@@ -67,7 +82,11 @@
     "reset-css": "^2.2.0",
     "sass-loader": "^4.1.1",
     "style-loader": "^0.13.1",
+    "universal-webpack": "^0.3.8",
     "webpack": "^2.3.2",
     "webpack-stream": "^3.2.0"
+  },
+  "devDependencies": {
+    "better-npm-run": "0.0.15"
   }
 }
