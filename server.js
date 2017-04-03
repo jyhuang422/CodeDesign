@@ -30,7 +30,7 @@ var mongoose = require('mongoose')
 //Fake data
 var fs = require('fs')
 
-const port = process.env.PORT || 3000;
+app.set('port', (process.env.PORT || 3000));
 
 export default function(parameters) {
   app.use('/dist/assets', express.static(__dirname + '/dist/assets'))
@@ -191,7 +191,7 @@ export default function(parameters) {
           </html>
       `
   }
-  app.listen(port, function() {
-    console.log('listening on ' + port)
+  app.listen(app.get('port'), function() {
+    console.log('listening on ' + app.get('port'))
   });
 }
