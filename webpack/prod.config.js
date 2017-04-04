@@ -60,9 +60,10 @@ module.exports = {
       allChunks: true
     }),
     new webpack.DefinePlugin({
-      'process.env': {
+      /*'process.env': {
         NODE_ENV: JSON.stringify('production')
-      }
+      },*/
+      __DEVELOPEMENT__: false
     }),
     new webpack.optimize.UglifyJsPlugin({
       compress: {

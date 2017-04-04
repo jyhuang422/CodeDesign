@@ -1,6 +1,7 @@
 var path = require('path');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var rootFolder = path.join(__dirname, '../');
+var webpack = require('webpack');
 
 module.exports = {
   watch: true,
@@ -59,6 +60,9 @@ module.exports = {
     new ExtractTextPlugin({
       filename: 'style.css',
       allChunks: true
+    }),
+    new webpack.DefinePlugin({
+      __DEVELOPEMENT__: true
     })
   ],
   node: {
